@@ -1,0 +1,2 @@
+#!/bin/bash
+taila -n 1 iacta >> iacta
