@@ -2,12 +2,14 @@
 # This script is displays the time for 12 hours and 59 minutes:
 hours=0
 
-while [ $hours -le 12 ]
+while [ $hours -le 2 ]
 do
+    echo "Hour: $hours"
+    
     minutes=1
     while [ $minutes -le 59 ]
     do
-        printf "%02d:%02d\n" $hours $minutes
+        echo $minutes
         minutes=$((minutes + 1))
     done
 
