@@ -1,3 +1,7 @@
+
 #!/usr/bin/env bash
-# Specify the path to the Apache log file
-awk '{print $1 " " $9}' apache-access.log
+
+#This script parse through the log file and print the ip and http status
+
+
+awk -F' ' '{ print $1, $9 }' apache-access.log | sort | uniq -c | sort -rn
