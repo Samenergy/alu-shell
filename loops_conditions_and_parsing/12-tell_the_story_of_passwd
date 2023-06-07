@@ -6,5 +6,4 @@ user_info="USER ID INFO"
 while IFS=':' read -r username _ gid _ _ home shell; do
 echo "The user $username is part of the $gid gang, lives in $home and rides $shell."
 echo "$gid's place is protected by the passcode $password, more info about the user here: $user_info"
-echo
 done < "$file"
