@@ -4,10 +4,9 @@ file="/etc/passwd"
 
 while IFS=':' read -r username _ uid gid _ home shell; do
     read -r -a user_info < <(grep -w "$username" /etc/passwd)
-    password=${user_info[1]}
     info=${user_info[4]}
 
     echo "The user $username is part of the $gid gang, lives in $home and rides $shell."
-    echo "User ID's place is protected by the passcode $password, more info about the user here: $info"
+    echo "User ID's place is protected by the passcode, more info about the user here: $info"
     echo
 done < "$file"
