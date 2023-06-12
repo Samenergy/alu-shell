@@ -3,7 +3,7 @@
 ps_output=$(ps axo pid,ppid,user,command)
 
 # Display the column headers
-printf "%-5s %-5s %-10s %-s\n" "PID" "PPID" "USER" "COMMAND"
+printf "%-10s %-10s %-10s %-s\n" "PID" "PPID" "USER" "COMMAND"
 
 # Loop through each line of the output
 while IFS= read -r line; do
@@ -14,5 +14,5 @@ while IFS= read -r line; do
     command=$(echo "$line" | awk '{$1=$2=$3=""; print $0}')
 
     # Display the process information
-    printf "%-5s %-5s %-10s %-s\n" "$pid" "$ppid" "$user" "$command"
+    printf "%-10s %-10s %-10s %-s\n" "$pid" "$ppid" "$user" "$command"
 done <<< "$ps_output"
