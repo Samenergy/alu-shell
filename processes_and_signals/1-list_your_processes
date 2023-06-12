@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 # Get the process information using 'ps' command
 ps_output=$(ps axo pid,ppid,user,command)
-
 # Display the column headers
-printf "%-10s %-10s %-10s %-s\n" "PID" "PPID" "USER" "COMMAND"
-
+printf "%-5s %-5s %-10s %-s\n" "PID" "PPID" "USER" "COMMAND"
 # Loop through each line of the output
 while IFS= read -r line; do
     # Parse the values from each line
@@ -12,7 +10,6 @@ while IFS= read -r line; do
     ppid=$(echo "$line" | awk '{print $2}')
     user=$(echo "$line" | awk '{print $3}')
     command=$(echo "$line" | awk '{$1=$2=$3=""; print $0}')
-
     # Display the process information
-    printf "%-10s %-10s %-10s %-s\n" "$pid" "$ppid" "$user" "$command"
+    printf "%-5s %-5s %-10s %-s\n" "$pid" "$ppid" "$user" "$command"
 done <<< "$ps_output"
