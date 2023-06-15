@@ -4,19 +4,19 @@ manage_my_process_script="https://github.com/Samenergy/alu-shell/tree/e4f6790ba1
 pid_file="/var/run/my_process.pid"
 case "$1" in
     start)
-        echo "Starting manage_my_process..."
+        echo "manage_my_process started"
         /bin/bash "$manage_my_process_script" start
         ;;
     stop)
-        echo "Stopping manage_my_process..."
+        echo "manage_my_process stopped"
         /bin/bash "$manage_my_process_script" stop
         ;;
     restart)
-        echo "Restarting manage_my_process..."
+        echo "manage_my_process restarted"
         /bin/bash "$manage_my_process_script" restart
         ;;
     *)
-        echo "Usage: $0 {start|stop|restart}"
+        echo "Usage: manage_my_process {start|stop|restart}"
         exit 1
 esac
 exit 0
