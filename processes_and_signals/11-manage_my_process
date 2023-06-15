@@ -19,7 +19,7 @@ case "$1" in
         fi
         /bin/bash "$manage_my_process_script" > /tmp/my_process &
         echo $! > "$pid_file"
-        echo "manage_my_process started."
+        echo "manage_my_process started"
         ;;
     stop)
         if [ ! -f "$pid_file" ]; then
