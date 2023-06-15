@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-## BEGIN INIT INFO
+### BEGIN INIT INFO
 # Provides:          manage_my_process
 # Required-Start:    $local_fs $network $syslog
 # Required-Stop:     $local_fs $network $syslog
@@ -27,4 +27,3 @@ case "$1" in
         exit 1
 esac
 exit 0
-
