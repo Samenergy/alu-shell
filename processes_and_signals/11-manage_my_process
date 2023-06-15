@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+## BEGIN INIT INFO
+# Provides:          manage_my_process
+# Required-Start:    $local_fs $network $syslog
+# Required-Stop:     $local_fs $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Manages the manage_my_process script
+### END INIT INFO
 # Change the path to your manage_my_process script
 manage_my_process_script="https://github.com/Samenergy/alu-shell/tree/e4f6790ba10180989a6cf1ca15dafba83d9f8e5f/processes_and_signals"
 pid_file="/var/run/my_process.pid"
