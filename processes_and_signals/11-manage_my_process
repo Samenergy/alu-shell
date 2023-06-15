@@ -11,16 +11,15 @@
 # Change the path to your manage_my_process script
 manage_my_process_script="https://github.com/Samenergy/alu-shell/blob/14ecee31c2197f78f91bcf3e85b651b6f65454e2/processes_and_signals/manage_my_process"
 pid_file="/var/run/my_process.pid"
-
 case "$1" in
     start)
         if [ -f "$pid_file" ]; then
             echo "manage_my_process is already started"
             exit 1
         fi
-        /bin/bash "$manage_my_process_script" > /dev/null 2>&1 &
+        /bin/bash "$manage_my_process_script" > /tmp/my_process &
         echo $! > "$pid_file"
-        echo "manage_my_process started"
+        echo "manage_my_process started."
         ;;
     stop)
         if [ ! -f "$pid_file" ]; then
@@ -36,7 +35,7 @@ case "$1" in
             kill "$(cat "$pid_file")"
             rm "$pid_file"
         fi
-        /bin/bash "$manage_my_process_script" > /dev/null 2>&1 &
+        /bin/bash "$manage_my_process_script" > /tmp/my_process &
         echo $! > "$pid_file"
         echo "manage_my_process restarted"
         ;;
@@ -44,4 +43,6 @@ case "$1" in
         echo "Usage: $0 {start|stop|restart}"
         exit 1
 esac
+
 exit 0
+
