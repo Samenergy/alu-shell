@@ -2,41 +2,36 @@
 # Change the path to your manage_my_process script
 manage_my_process_script="https://github.com/Samenergy/alu-shell/tree/e4f6790ba10180989a6cf1ca15dafba83d9f8e5f/processes_and_signals"
 pid_file="/var/run/my_process.pid"
-
 start() {
     # Check if the process is already running
     if [ -f "$pid_file" ]; then
-        echo "manage_my_process is already started."
+        echo "manage_my_process is already started"
         exit 1
     fi
 
     # Start the process
     echo "Starting manage_my_process..."
-    nohup bash "$manage_my_process_script" > /dev/null 2>&1 &
+    nohup bash "$manage_my_process_script" >/dev/null 2>&1 &
     echo $! > "$pid_file"
-    echo "manage_my_process started."
+    echo "manage_my_process started"
 }
-
 stop() {
     # Check if the process is not running
     if [ ! -f "$pid_file" ]; then
-        echo "manage_my_process is not running."
+        echo "manage_my_process is not running"
         exit 1
     fi
-
     # Stop the process
     echo "Stopping manage_my_process..."
-    kill $(cat "$pid_file")
+    kill "$(cat "$pid_file")"
     rm "$pid_file"
-    echo "manage_my_process stopped."
+    echo "manage_my_process stopped"
 }
-
 restart() {
     stop
     start
-    echo "manage_my_process restarted."
+    echo "manage_my_process restarted"
 }
-
 # Handle the command-line arguments
 case "$1" in
     start)
